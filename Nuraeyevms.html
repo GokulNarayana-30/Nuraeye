@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Nuraeye</title>
+<link rel="icon" type="image/png" href="pictures/logo.png">
+
+<style>
+/* ================= YOUR ORIGINAL CSS ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+  background: #000;
+  color: #fff;
+}
+
+/* ================= HEADER ================= */
+.main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background: #8000ff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  z-index: 1000;
+}
+
+.logo {
+  height: 50px;
+}
+
+/* DESKTOP NAV */
+.header-nav {
+  display: flex;
+  gap: 36px;
+  align-items: center;
+}
+
+.header-nav a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 13px;
+  letter-spacing: 1px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.header-nav span {
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+/* DESKTOP DROPDOWN */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 16px;
+  left: 0;
+  background: #111;
+  min-width: 220px;
+  display: none;
+  flex-direction: column;
+  padding: 10px 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+
+.dropdown-menu a,
+.dropdown-menu span {
+  padding: 10px 18px;
+  font-size: 13px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.dropdown-menu span {
+  text-align: center;
+  opacity: 0.6;
+}
+
+.dropdown-menu a:hover {
+  background: #1f2937;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: flex;
+}
+
+/* CONTACT */
+.contact-btn {
+  text-decoration: none;
+  color: #fff;
+  font-size: 13px;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+
+/* ================= HAMBURGER ================= */
+.menu-btn {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* ================= MOBILE MENU ================= */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 300px;
+  height: 100vh;
+  background: #000;
+  transition: right 0.3s ease;
+  z-index: 2000;
+}
+
+.mobile-menu.active {
+  right: 0;
+}
+
+.mobile-menu-header {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  border-bottom: 1px solid #222;
+}
+
+.mobile-menu-header img {
+  height: 30px;
+}
+
+.mobile-close {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.mobile-item {
+  border-bottom: 1px solid #222;
+}
+
+.mobile-item-title {
+  padding: 18px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 15px;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.mobile-submenu-panel {
+  display: none;
+  background: linear-gradient(180deg, #151820, #10131a);
+  padding: 16px 20px 18px;
+}
+
+.mobile-submenu-panel.show {
+  display: block;
+}
+
+.submenu-series {
+  font-size: 13px;
+  color: #9ca3af;
+  margin-bottom: 12px;
+}
+
+.submenu-link {
+  display: block;
+  font-size: 15px;
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 0;
+}
+
+/* ================= CONTENT ================= */
+.section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 120px 24px 80px;
+}
+
+.info-box {
+  display: flex;
+  gap: 60px;
+  align-items: center;
+}
+
+.info-image {
+  flex: 1;
+}
+
+.info-image img {
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+}
+
+.info-text {
+  flex: 1;
+}
+
+.info-text h2 {
+  font-size: 30px;
+  margin-bottom: 14px;
+}
+
+.info-text p {
+  font-size: 16px;
+  color: #c7c7c7;
+  line-height: 1.7;
+}
+
+/* READ MORE (ORIGINAL) */
+.read-more-content {
+  display: none;
+  margin-top: 18px;
+}
+
+.read-more-content.show {
+  display: block;
+}
+
+.read-more-content h4 {
+  margin-top: 22px;
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+.read-more-content ul {
+  list-style: none;
+}
+
+.read-more-content li {
+  font-size: 14px;
+  color: #aaa;
+  margin-bottom: 6px;
+}
+
+.read-more-btn {
+  margin-top: 18px;
+  background: none;
+  border: 1px solid #8000ff;
+  color: #fff;
+  padding: 9px 18px;
+  border-radius: 22px;
+  cursor: pointer;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .header-nav,
+  .contact-btn {
+    display: none;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+
+  .info-box {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="main-header">
+  <img src="pictures/nuraeye4.png" class="logo" alt="Nuraeye" />
+
+  <nav class="header-nav">
+    <div class="dropdown">
+      <a href="#">PRODUCTS <span>▾</span></a>
+      <div class="dropdown-menu">
+        <a href="AIBulletCamera.html">AI Bullet Camera</a>
+        <a href="AIPTZCCTVCamera.html">AI PTZ Camera</a>
+        <a href="AIDomeCamera.html">AI Dome Camera</a>
+        <span>Software</span>
+        <a href="Nuraeyevms.html">Nuraeye VMS</a>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <a href="#">ABOUT US <span>▾</span></a>
+      <div class="dropdown-menu">
+        <a href="https://onchiptech.com/">Onchip Technologies</a>
+      </div>
+    </div>
+
+    <a href="#">RESOURCES</a>
+  </nav>
+
+  <a href="#" class="contact-btn">CONTACT US</a>
+  <div class="menu-btn" onclick="toggleMenu()">☰</div>
+</header>
+
+<!-- ================= MOBILE MENU ================= -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-header">
+    <img src="pictures/logo.png" />
+    <div class="mobile-close" onclick="toggleMenu()">✕</div>
+  </div>
+
+  <div class="mobile-item">
+    <div class="mobile-item-title">SOLUTIONS</div>
+  </div>
+
+  <div class="mobile-item">
+    <div class="mobile-item-title" onclick="toggleProducts()">
+      PRODUCTS <span>⌄</span>
+    </div>
+    <div class="mobile-submenu-panel" id="productsMenu">
+      <a class="submenu-link" href="AIBulletCamera.html">AI Bullet Camera</a>
+      <a class="submenu-link" href="AIPTZCCTVCamera.html">AI PTZ Camera</a>
+      <a class="submenu-link" href="AIDomeCamera.html">AI Dome Camera</a>
+      <div class="submenu-series">Software</div>
+      <a class="submenu-link" href="Nuraeyevms.html">Nuraeye VMS</a>
+    </div>
+  </div>
+
+  <div class="mobile-item"><div class="mobile-item-title">COMPANY</div></div>
+  <div class="mobile-item"><div class="mobile-item-title">RESOURCES</div></div>
+  <div class="mobile-item"><div class="mobile-item-title">CONTACT US</div></div>
+</div>
+
+<!-- ================= VMS SECTION ================= -->
+<!-- ================= VMS HERO (RECOMMENDED) ================= -->
+<section
+  style="
+    margin-top:64px;
+    width:100%;
+    min-height:700px;
+    background:
+      
+      url('image.png') center / cover no-repeat;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  "
+>
+  <div
+    style="
+      max-width:900px;
+      padding:90px 24px;
+      text-align:center;
+    "
+  >
+
+    <h2 style="font-size:44px;margin-bottom:12px;">
+      NuraEye VMS
+    </h2>
+
+    <div style="opacity:0.8;margin-bottom:26px;">
+      (Video Management Service)
+    </div>
+
+    <p
+      style="
+        font-size:18px;
+        color:#d1d5db;
+        line-height:1.7;
+        margin-bottom:36px;
+      "
+    >
+      NuraEye VMS transforms your existing CCTV cameras into an intelligent,
+      AI-powered video platform that delivers real-time alerts, operational
+      insights, and investigation-ready evidence across all locations.
+    </p>
+
+    <div
+      style="
+        display:flex;
+        gap:18px;
+        justify-content:center;
+        flex-wrap:wrap;
+        margin-bottom:40px;
+      "
+    >
+      <div
+        style="
+          border:1px solid rgba(255,255,255,0.18);
+          padding:12px 22px;
+          border-radius:20px;
+          font-size:14px;
+          background:rgba(0,0,0,0.35);
+        "
+      >
+        🔔 Real-time alerts
+      </div>
+
+      <div
+        style="
+          border:1px solid rgba(255,255,255,0.18);
+          padding:12px 22px;
+          border-radius:20px;
+          font-size:14px;
+          background:rgba(0,0,0,0.35);
+        "
+      >
+        📊 Operational insights
+      </div>
+
+      <div
+        style="
+          border:1px solid rgba(255,255,255,0.18);
+          padding:12px 22px;
+          border-radius:20px;
+          font-size:14px;
+          background:rgba(0,0,0,0.35);
+        "
+      >
+        🧾 Evidence workflows
+      </div>
+    </div>
+
+    <button
+      class="read-more-btn"
+      onclick="toggleVmsReadMore(this)"
+    >
+      Read more
+    </button>
+
+  </div>
+
+</section>
+
+<!-- ================= RESTAURANT SECTION (HIDDEN INITIALLY) ================= -->
+<div class="read-more-content" id="vmsReadMore">
+
+  <div class="section">
+
+    <div class="info-box">
+      <div class="info-image">
+        <img src="pictures/Restaurant.png" alt="Restaurant CCTV AI">
+      </div>
+
+      <div class="info-text">
+        <h2>Restaurants / Fast food / Hospitality</h2>
+
+        <p>
+          Upgrade existing CCTV into an intelligent assistant across dining areas,
+          kitchens, and POS—improving security, safety, operations, and customer
+          experience without changing camera infrastructure.
+        </p>
+
+        <div class="read-more-content" id="readMoreText">
+
+          <h4>Security & Loss Prevention</h4>
+          <ul>
+            <li>POS/cash-counter exception alerts</li>
+            <li>Backdoor & stockroom intrusion</li>
+            <li>After-hours access anomalies</li>
+            <li>Vandalism & theft hotspots</li>
+          </ul>
+
+          <h4>Safety</h4>
+          <ul>
+            <li>Slip/fall detection in dining & kitchen</li>
+            <li>Fire/smoke cues in kitchen zones</li>
+            <li>Restricted-area entry (hot/knife zones)</li>
+            <li>Aggression / raised-voice escalation</li>
+          </ul>
+
+          <h4>Operations</h4>
+          <ul>
+            <li>Queue length & wait-time SLAs</li>
+            <li>Table occupancy & turn-time</li>
+            <li>Peak-period forecasting signals</li>
+            <li>Staff attendance & coverage</li>
+          </ul>
+
+          <h4>Customer Experience</h4>
+          <ul>
+            <li>Dwell heatmaps & journey insights</li>
+            <li>Assistance alerts in service zones</li>
+            <li>incident auto-clips for review</li>
+            <li>Multi-site rollup KPIs</li>
+          </ul>
+
+        </div>
+
+        <button class="read-more-btn" onclick="toggleReadMore(this)">
+          Read more
+        </button>
+      </div>
+    </div>
+
+  </div>
+  <div class="section">
+
+        <div class="info-box">
+            <div class="info-image">
+            <img src="pictures/Retail.png" alt="Retail Store CCTV AI">
+            </div>
+
+            <div class="info-text">
+            <h2>Retail Stores</h2>
+
+            <p>
+                Reduce shrink and improve execution with real-time alerts and
+                store intelligence powered by AI—using your existing CCTV
+                infrastructure at scale.
+            </p>
+
+            <div class="read-more-content">
+
+                <h4>Loss Prevention</h4>
+                <ul>
+                <li>Self-checkout / POS fraud pattern detection</li>
+                <li>Concealment & suspicious behavior detection</li>
+                <li>Stockroom & cash-office access control</li>
+                <li>Repeat offender watchlists (policy-based)</li>
+                </ul>
+
+                <h4>Operations</h4>
+                <ul>
+                <li>Queue monitoring & staffing triggers</li>
+                <li>Out-of-stock & shelf-gap alerts</li>
+                <li>Planogram & promotion compliance</li>
+                <li>Store opening / closing compliance</li>
+                </ul>
+
+                <h4>Experience & BI</h4>
+                <ul>
+                <li>Footfall, dwell & heatmaps</li>
+                <li>Zone conversion proxy metrics</li>
+                <li>High-value zone assistance prompts</li>
+                <li>VIP recognition (opt-in)</li>
+                </ul>
+
+                <h4>Investigations</h4>
+                <ul>
+                <li>Evidence packaging (auto-clips)</li>
+                <li>Timeline & case export</li>
+                <li>Natural-language search of incidents</li>
+                <li>Role-based access & retention</li>
+                </ul>
+
+            </div>
+
+            <button class="read-more-btn" onclick="this.previousElementSibling.classList.toggle('show'); this.innerText = this.previousElementSibling.classList.contains('show') ? 'Read less' : 'Read more';">
+                Read more
+            </button>
+
+            </div>
+        </div>
+
+</div>
+<div class="section">
+
+  <div class="info-box">
+    <div class="info-image">
+      <img src="pictures/Banking.png" alt="Banking CCTV AI">
+    </div>
+
+    <div class="info-text">
+      <h2>Banking (Branches + ATMs)</h2>
+
+      <p>
+        Protect ATM and branch operations with low-latency, high-assurance
+        video intelligence—delivering real-time alerts, audit trails, and
+        centralized visibility across locations.
+      </p>
+
+      <div class="read-more-content">
+
+        <h4>ATM Security</h4>
+        <ul>
+          <li>ATM entry loitering & tailgating detection</li>
+          <li>Tamper & anomaly cues near ATM fascia</li>
+          <li>After-hours presence detection</li>
+          <li>Suspicious clustering pattern alerts</li>
+        </ul>
+
+        <h4>Branch Security</h4>
+        <ul>
+          <li>Restricted-zone entry (vault / server rooms)</li>
+          <li>Aggression & robbery indicator detection</li>
+          <li>Door held-open anomaly alerts</li>
+          <li>Access policy enforcement</li>
+        </ul>
+
+        <h4>Operations</h4>
+        <ul>
+          <li>Queue & wait-time escalation alerts</li>
+          <li>Counter staffing optimization signals</li>
+          <li>Incident response performance metrics</li>
+          <li>Audit-ready event logs</li>
+        </ul>
+
+        <h4>Customer & Risk</h4>
+        <ul>
+          <li>VIP / known-customer workflows (policy-based)</li>
+          <li>Dispute resolution auto-clips</li>
+          <li>Compliance reporting dashboards</li>
+          <li>Multi-branch command-center view</li>
+        </ul>
+
+      </div>
+
+      <button
+        class="read-more-btn"
+        onclick="this.previousElementSibling.classList.toggle('show');
+                 this.innerText = this.previousElementSibling.classList.contains('show')
+                   ? 'Read less'
+                   : 'Read more';">
+        Read more
+      </button>
+
+    </div>
+  </div>
+
+</div>
+<div class="section">
+
+  <div class="info-box">
+    <div class="info-image">
+      <img src="pictures/Education.png" alt="Education CCTV AI">
+    </div>
+
+    <div class="info-text">
+      <h2>Education (Schools / Campuses)</h2>
+
+      <p>
+        Improve campus safety with proactive alerts and fast investigations
+        across perimeters, classrooms, corridors, and shared spaces—using
+        AI-powered video intelligence.
+      </p>
+
+      <div class="read-more-content">
+
+        <h4>Campus Security</h4>
+        <ul>
+          <li>Perimeter intrusion & after-hours entry detection</li>
+          <li>Intruder detection in restricted areas</li>
+          <li>Weapon-like object escalation (policy-based)</li>
+          <li>Visitor monitoring & alerting</li>
+        </ul>
+
+        <h4>Student Safety</h4>
+        <ul>
+          <li>Bullying & fight detection</li>
+          <li>Crowding detection in corridors</li>
+          <li>Playground incident alerts</li>
+          <li>Emergency response workflows</li>
+        </ul>
+
+        <h4>Operations</h4>
+        <ul>
+          <li>Attendance monitoring (policy-based face roll call)</li>
+          <li>Bus bay boarding safety monitoring</li>
+          <li>Restricted-door tailgating detection</li>
+          <li>After-hours facility monitoring</li>
+        </ul>
+
+        <h4>Governance</h4>
+        <ul>
+          <li>Incident auto-clips & investigation timelines</li>
+          <li>Trend dashboards by zone & time</li>
+          <li>Privacy controls & role-based access</li>
+          <li>Cross-camera tracking for investigations</li>
+        </ul>
+
+      </div>
+
+      <button
+        class="read-more-btn"
+        onclick="this.previousElementSibling.classList.toggle('show');
+                 this.innerText = this.previousElementSibling.classList.contains('show')
+                   ? 'Read less'
+                   : 'Read more';">
+        Read more
+      </button>
+
+    </div>
+  </div>
+
+</div>
+<div class="section">
+
+  <div class="info-box">
+    <div class="info-image">
+      <img src="pictures/Healthcare.png" alt="Healthcare CCTV AI">
+    </div>
+
+    <div class="info-text">
+      <h2>Healthcare (Hospitals / Clinics / Elder Care)</h2>
+
+      <p>
+        Enhance patient safety and clinical compliance with edge-first,
+        AI-powered video intelligence—delivering proactive alerts and
+        operational flow analytics across care environments.
+      </p>
+
+      <div class="read-more-content">
+
+        <h4>Patient Safety</h4>
+        <ul>
+          <li>Fall detection & bed-exit alerts</li>
+          <li>Wandering / elopement detection</li>
+          <li>Aggression detection in emergency rooms</li>
+          <li>Priority escalation workflows</li>
+        </ul>
+
+        <h4>Clinical Compliance</h4>
+        <ul>
+          <li>PPE compliance in sterile zones</li>
+          <li>Hygiene protocol adherence (aggregate insights)</li>
+          <li>Restricted-zone entry alerts</li>
+          <li>Audit logs for compliance reviews</li>
+        </ul>
+
+        <h4>Operations</h4>
+        <ul>
+          <li>Wait-time analytics (registration / pharmacy)</li>
+          <li>Room & bed utilization signals</li>
+          <li>Turnaround time performance metrics</li>
+          <li>Staff response-time tracking</li>
+        </ul>
+
+        <h4>Privacy & Security</h4>
+        <ul>
+          <li>Role-based access with video masking</li>
+          <li>Configurable video retention windows</li>
+          <li>Evidence packaging for incidents</li>
+          <li>On-edge processing options</li>
+        </ul>
+
+      </div>
+
+      <button
+        class="read-more-btn"
+        onclick="this.previousElementSibling.classList.toggle('show');
+                 this.innerText = this.previousElementSibling.classList.contains('show')
+                   ? 'Read less'
+                   : 'Read more';">
+        Read more
+      </button>
+
+    </div>
+  </div>
+
+</div>
+<div class="section">
+
+  <div class="info-box">
+    <div class="info-image">
+      <img src="pictures/Warehouse.png" alt="Warehousing and Manufacturing CCTV AI">
+    </div>
+
+    <div class="info-text">
+      <h2>Warehousing & Manufacturing</h2>
+
+      <p>
+        Reduce incidents and downtime with safety-first video analytics and
+        practical operational KPIs—delivered through AI-powered monitoring
+        across warehouses, docks, and production floors.
+      </p>
+
+      <div class="read-more-content">
+
+        <h4>Safety (EHS)</h4>
+        <ul>
+          <li>PPE compliance (helmet, vest, gloves)</li>
+          <li>Forklift–pedestrian proximity alerts</li>
+          <li>Restricted-zone entry detection in hot areas</li>
+          <li>Near-miss and unsafe-motion flags</li>
+        </ul>
+
+        <h4>Operations</h4>
+        <ul>
+          <li>Dock congestion & dwell-time analytics</li>
+          <li>Staging overflow & lane occupancy detection</li>
+          <li>Conveyor jam & chute overflow alerts</li>
+          <li>Throughput bottleneck detection</li>
+        </ul>
+
+        <h4>Quality</h4>
+        <ul>
+          <li>Visual damage & defect detection</li>
+          <li>Missing label or seal issue alerts</li>
+          <li>Wrong-item-in-bin verification</li>
+          <li>Exception clipping for QA review</li>
+        </ul>
+
+        <h4>Governance</h4>
+        <ul>
+          <li>Shift-level KPI rollups</li>
+          <li>Incident workflows & audit trails</li>
+          <li>Multi-site standardization reporting</li>
+          <li>Edge-first deployment for reliability</li>
+        </ul>
+
+      </div>
+
+      <button
+        class="read-more-btn"
+        onclick="this.previousElementSibling.classList.toggle('show');
+                 this.innerText = this.previousElementSibling.classList.contains('show')
+                   ? 'Read less'
+                   : 'Read more';">
+        Read more
+      </button>
+
+    </div>
+  </div>
+
+</div>
+<div class="section">
+
+  <div class="info-box">
+    <div class="info-image">
+      <img src="pictures/Residential.png" alt="Gated Communities CCTV AI">
+    </div>
+
+    <div class="info-text">
+      <h2>Gated Communities / Residential Societies</h2>
+
+      <p>
+        Turn gates and common areas into proactive safety and operations
+        systems—privacy-first and edge-ready—using AI-powered video
+        intelligence across residential environments.
+      </p>
+
+      <div class="read-more-content">
+
+        <h4>Gate & Perimeter</h4>
+        <ul>
+          <li>ANPR entry & exit logs with watchlists</li>
+          <li>Tailgating / piggyback detection at boom barriers</li>
+          <li>Perimeter intrusion & loitering detection</li>
+          <li>After-hours movement anomaly alerts</li>
+        </ul>
+
+        <h4>Resident Safety</h4>
+        <ul>
+          <li>Common-area fall detection (optional)</li>
+          <li>Vandalism & fight escalation alerts (optional audio)</li>
+          <li>Kids restricted-zone alerts</li>
+          <li>Elder safety SOS workflows (optional)</li>
+        </ul>
+
+        <h4>Operations</h4>
+        <ul>
+          <li>Visitor & service staff time-window enforcement</li>
+          <li>Parking violations (fire-lane / double parking)</li>
+          <li>Amenity access & misuse control</li>
+          <li>Delivery zone monitoring</li>
+        </ul>
+
+        <h4>Privacy & Governance</h4>
+        <ul>
+          <li>Role-based access with masking modes</li>
+          <li>Configurable video retention windows</li>
+          <li>Incident workflows with audit trails</li>
+          <li>Multi-gate dashboard rollups</li>
+        </ul>
+
+      </div>
+
+      <button
+        class="read-more-btn"
+        onclick="this.previousElementSibling.classList.toggle('show');
+                 this.innerText = this.previousElementSibling.classList.contains('show')
+                   ? 'Read less'
+                   : 'Read more';">
+        Read more
+      </button>
+
+    </div>
+  </div>
+
+</div>
+<div class="section">
+
+  <div class="info-box">
+    <div class="info-image">
+      <img src="pictures/Logistics.png" alt="Logistics CCTV AI">
+    </div>
+
+    <div class="info-text">
+      <h2>Logistics (3PL / Hubs / Yards)</h2>
+
+      <p>
+        Improve safety and throughput with end-to-end yard and dock visibility,
+        package integrity monitoring, and AI-driven operational insights across
+        logistics facilities.
+      </p>
+
+      <div class="read-more-content">
+
+        <h4>Safety</h4>
+        <ul>
+          <li>Dock safety zone monitoring & fall-risk detection</li>
+          <li>Vehicle reversal hazard alerts</li>
+          <li>Pedestrian safety detection in yard lanes</li>
+          <li>Restricted-area entry alerts</li>
+        </ul>
+
+        <h4>Yard & Dock Operations</h4>
+        <ul>
+          <li>Bay occupancy & utilization monitoring</li>
+          <li>Trailer & container movement tracking</li>
+          <li>Dispatch dwell-time bottleneck detection</li>
+          <li>Congestion heatmaps for yard optimization</li>
+        </ul>
+
+        <h4>Parcel Integrity</h4>
+        <ul>
+          <li>Damage & tamper cue detection</li>
+          <li>Label presence & legibility verification</li>
+          <li>Pile-up & conveyor jam detection</li>
+          <li>Exception review queues for operators</li>
+        </ul>
+
+        <h4>Performance</h4>
+        <ul>
+          <li>Throughput-per-hour KPI tracking</li>
+          <li>SLA breach alerts</li>
+          <li>Incident timelines with evidence clips</li>
+          <li>Multi-site operations dashboards</li>
+        </ul>
+
+      </div>
+
+      <button
+        class="read-more-btn"
+        onclick="this.previousElementSibling.classList.toggle('show');
+                 this.innerText = this.previousElementSibling.classList.contains('show')
+                   ? 'Read less'
+                   : 'Read more';">
+        Read more
+      </button>
+
+    </div>
+  </div>
+
+</div>
+<div class="section">
+
+  <div class="info-box">
+    <div class="info-image">
+      <img src="pictures/SmartCity.png" alt="Smart City Traffic CCTV AI">
+    </div>
+
+    <div class="info-text">
+      <h2>Smart City / Traffic</h2>
+
+      <p>
+        Detect incidents early and improve traffic compliance with scalable,
+        AI-powered video analytics across city intersections, corridors,
+        and public infrastructure.
+      </p>
+
+      <div class="read-more-content">
+
+        <h4>Traffic Safety</h4>
+        <ul>
+          <li>Accident & stalled vehicle detection</li>
+          <li>Debris-on-road alerts</li>
+          <li>Wrong-way driving cues</li>
+          <li>Illegal parking enforcement</li>
+        </ul>
+
+        <h4>ANPR & Investigations</h4>
+        <ul>
+          <li>Vehicle watchlists (stolen / BOLO)</li>
+          <li>Vehicle re-identification workflows</li>
+          <li>Cross-camera route reconstruction</li>
+          <li>Evidence export for enforcement agencies</li>
+        </ul>
+
+        <h4>Public Safety</h4>
+        <ul>
+          <li>Crowd density hotspot detection</li>
+          <li>Perimeter intrusion at public assets</li>
+          <li>Abandoned object flags (policy-based)</li>
+          <li>Incident escalation playbooks</li>
+        </ul>
+
+        <h4>Command Center</h4>
+        <ul>
+          <li>City-wide dashboard rollups</li>
+          <li>Automated incident clip generation</li>
+          <li>Natural-language search across incidents</li>
+          <li>Retention & access governance</li>
+        </ul>
+
+      </div>
+
+      <button
+        class="read-more-btn"
+        onclick="this.previousElementSibling.classList.toggle('show');
+                 this.innerText = this.previousElementSibling.classList.contains('show')
+                   ? 'Read less'
+                   : 'Read more';">
+        Read more
+      </button>
+
+    </div>
+  </div>
+
+</div>
+<div class="section">
+
+  <div class="info-box">
+    <div class="info-image">
+      <img src="pictures/Airports.png" alt="Airports Rail Metro CCTV AI">
+    </div>
+
+    <div class="info-text">
+      <h2>Airports / Rail / Metro / Public Venues</h2>
+
+      <p>
+        Prevent overcrowding and respond faster with AI-powered queue, crowd,
+        and intrusion analytics across large public footprints such as airports,
+        transit hubs, and major venues.
+      </p>
+
+      <div class="read-more-content">
+
+        <h4>Crowd & Queue</h4>
+        <ul>
+          <li>Queue length & SLA monitoring</li>
+          <li>Platform & terminal overcrowding alerts</li>
+          <li>Crowd surge indicators</li>
+          <li>Bottleneck hotspot heatmaps</li>
+        </ul>
+
+        <h4>Security</h4>
+        <ul>
+          <li>Perimeter monitoring & restricted access alerts</li>
+          <li>Track trespass & runway incursion detection (context-aware)</li>
+          <li>Staff-only door tailgating detection</li>
+          <li>Abandoned item persistence alerts (policy-based)</li>
+        </ul>
+
+        <h4>Operations</h4>
+        <ul>
+          <li>Staff dispatch & response workflows</li>
+          <li>Incident triage with auto-generated clips</li>
+          <li>Zone-based KPI rollups</li>
+          <li>Service quality reporting</li>
+        </ul>
+
+        <h4>Experience</h4>
+        <ul>
+          <li>Wait-time transparency metrics</li>
+          <li>Crowd guidance & flow triggers</li>
+          <li>Investigation timeline exports</li>
+          <li>Multi-site oversight across terminals & stations</li>
+        </ul>
+
+      </div>
+
+      <button
+        class="read-more-btn"
+        onclick="this.previousElementSibling.classList.toggle('show');
+                 this.innerText = this.previousElementSibling.classList.contains('show')
+                   ? 'Read less'
+                   : 'Read more';">
+        Read more
+      </button>
+
+    </div>
+  </div>
+
+</div>
+<div class="section">
+
+  <div class="info-box">
+    <div class="info-image">
+      <img src="pictures/Construction.png" alt="Construction Infrastructure CCTV AI">
+    </div>
+
+    <div class="info-text">
+      <h2>Construction / Infrastructure</h2>
+
+      <p>
+        Boost EHS compliance and reduce theft with zone-aware, AI-powered
+        video analytics and rapid evidence workflows across construction
+        and infrastructure sites.
+      </p>
+
+      <div class="read-more-content">
+
+        <h4>Safety (EHS)</h4>
+        <ul>
+          <li>PPE and safety harness compliance monitoring</li>
+          <li>Unsafe proximity detection near heavy equipment</li>
+          <li>Crane swing & excavation zone geofencing</li>
+          <li>Near-miss detection with real-time alerts</li>
+        </ul>
+
+        <h4>Site Security</h4>
+        <ul>
+          <li>After-hours intrusion detection</li>
+          <li>Material theft and anomaly cues</li>
+          <li>Perimeter breach detection</li>
+          <li>Restricted-zone enforcement</li>
+        </ul>
+
+        <h4>Operations</h4>
+        <ul>
+          <li>Site access and guard workflow monitoring</li>
+          <li>Vehicle movement and route tracking</li>
+          <li>Zone-based activity heatmaps</li>
+          <li>Compliance and productivity reporting</li>
+        </ul>
+
+        <h4>Governance</h4>
+        <ul>
+          <li>Evidence packaging with audit trails</li>
+          <li>Multi-site standard operating playbooks</li>
+          <li>Camera health and uptime KPIs</li>
+          <li>Edge-first resilience for remote sites</li>
+        </ul>
+
+      </div>
+
+      <button
+        class="read-more-btn"
+        onclick="this.previousElementSibling.classList.toggle('show');
+                 this.innerText = this.previousElementSibling.classList.contains('show')
+                   ? 'Read less'
+                   : 'Read more';">
+        Read more
+      </button>
+
+    </div>
+  </div>
+
+</div>
+
+
+
+
+  
+</div>
+
+<script>
+function toggleMenu() {
+  document.getElementById("mobileMenu").classList.toggle("active");
+}
+
+function toggleProducts() {
+  document.getElementById("productsMenu").classList.toggle("show");
+}
+
+function toggleReadMore(btn) {
+  const content = document.getElementById("readMoreText");
+  content.classList.toggle("show");
+  btn.innerText = content.classList.contains("show")
+    ? "Read less"
+    : "Read more";
+}
+
+function toggleVmsReadMore(btn) {
+  const section = document.getElementById("vmsReadMore");
+  section.classList.toggle("show");
+
+  btn.innerText = section.classList.contains("show")
+    ? "Read less"
+    : "Read more";
+
+  if (section.classList.contains("show")) {
+    setTimeout(() => {
+      section.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }, 100);
+  }
+}
+</script>
+
+</body>
+</html>

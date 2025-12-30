@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Nuraeye</title>
+<link rel="icon" type="image/png" href="pictures/logo.png">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+  background: #000;
+  color: #fff;
+}
+
+/* ================= HEADER ================= */
+.main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;              /* reduced height */
+  background: #8000ff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  z-index: 1000;
+}
+
+.logo {
+  height: 50px;              /* reduced logo size */
+}
+
+/* DESKTOP NAV */
+.header-nav {
+  display: flex;
+  gap: 36px;
+  align-items: center;
+}
+
+.header-nav a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 13px;
+  letter-spacing: 1px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.header-nav span {
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+/* DESKTOP DROPDOWN */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 16px;                /* 🔑 closer to PRODUCTS */
+  left: 0;
+  background: #111;
+  min-width: 220px;
+  display: none;
+  flex-direction: column;
+  padding: 10px 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+
+.dropdown-menu a {
+  padding: 10px 18px;
+  font-size: 13px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.dropdown-menu a:hover {
+  background: #1f2937;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: flex;
+}
+
+/* CONTACT */
+.contact-btn {
+  text-decoration: none;
+  color: #fff;
+  font-size: 13px;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+
+/* ================= HAMBURGER ================= */
+.menu-btn {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* ================= MOBILE MENU ================= */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 300px;
+  height: 100vh;
+  background: #000;
+  transition: right 0.3s ease;
+  z-index: 2000;
+}
+
+.mobile-menu.active {
+  right: 0;
+}
+
+/* MOBILE MENU HEADER */
+.mobile-menu-header {
+  height: 64px;              /* match header */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  border-bottom: 1px solid #222;
+}
+
+.mobile-menu-header img {
+  height: 30px;
+}
+
+.mobile-close {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* MOBILE MENU ITEMS */
+.mobile-item {
+  border-bottom: 1px solid #222;
+}
+
+.mobile-item-title {
+  padding: 18px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 15px;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+/* PRODUCTS SUBMENU PANEL */
+.mobile-submenu-panel {
+  display: none;
+  background: linear-gradient(180deg, #151820, #10131a);
+  padding: 16px 20px 18px;
+}
+
+.mobile-submenu-panel.show {
+  display: block;
+}
+
+.submenu-series {
+  font-size: 13px;
+  letter-spacing: 1px;
+  color: #9ca3af;
+  margin-bottom: 12px;
+}
+
+.submenu-link {
+  display: block;
+  font-size: 15px;
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 0;
+}
+
+.submenu-link:hover {
+  opacity: 0.85;
+}
+
+/* CONTENT */
+.content {
+  padding-top: 100px;
+  height: 2000px;
+  text-align: center;
+  color: #888;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+  .header-nav,
+  .contact-btn {
+    display: none;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="main-header">
+  <img
+    src="pictures/nuraeye4.png"
+    class="logo"
+    alt="Company Logo"
+    href="Nuraeyevms.html"
+  />
+
+  <nav class="header-nav">
+    <div class="dropdown">
+      <a href="#">PRODUCTS <span>▾</span></a>
+      <div class="dropdown-menu">
+        <a href="AIBulletCamera.html">AI Bullet Camera</a>
+        <a href="AIPTZCCTVCamera.html">AI PTZ Camera</a>
+        <a href="AIDomeCamera.html">AI Dome Camera</a>
+        <span style=text-align:center>Software</span>
+        <a href="Nuraeyevms.html">Nuraeye VMS</a>
+      </div>
+    </div>
+     <div class="dropdown">
+      <a href="#">ABOUT US<span>▾</span></a>
+      <div class="dropdown-menu">
+        <a href="https://onchiptech.com/">Onchip Technologies
+        </a>
+      </div>
+     </div>
+    <a href="#">RESOURCES <span>▾</span></a>
+  </nav>
+
+  <a href="#" class="contact-btn">CONTACT US</a>
+
+  <div class="menu-btn" onclick="toggleMenu()">☰</div>
+</header>
+
+<!-- ================= MOBILE MENU ================= -->
+<div class="mobile-menu" id="mobileMenu">
+
+  <div class="mobile-menu-header">
+    <img
+      src="logo.png"
+    />
+    <div class="mobile-close" onclick="toggleMenu()">✕</div>
+  </div>
+
+  <div class="mobile-item">
+    <div class="mobile-item-title">
+      SOLUTIONS
+      <span>⌄</span>
+    </div>
+  </div>
+
+  <div class="mobile-item">
+    <div class="mobile-item-title" onclick="toggleProducts()">
+      PRODUCTS
+      <span>⌄</span>
+    </div>
+    <div class="mobile-submenu-panel" id="productsMenu">
+      <a class="submenu-link" href="AIBulletCamera.html">AI Bullet Camera</a>
+      <a class="submenu-link" href="AIPTZCCTVCamera.html">AI PTZ Camera</a>
+      <a class="submenu-link" href="AIDomeCamera.html">AI Dome Camera</a>
+      <div class="submenu-series">Software</div>
+      <a class="submenu-link" href="Nuraeyevms.html">Nuraeye VMS</a>
+    </div>
+  </div>
+
+  <div class="mobile-item">
+    <div class="mobile-item-title">
+      COMPANY
+      <span>⌄</span>
+    </div>
+  </div>
+
+  <div class="mobile-item">
+    <div class="mobile-item-title">
+      RESOURCES
+      <span>⌄</span>
+    </div>
+  </div>
+
+  <div class="mobile-item">
+    <div class="mobile-item-title">CONTACT US</div>
+  </div>
+
+</div>
+
+<div class="content">
+  Compact header & dropdown aligned closely to PRODUCTS
+</div>
+
+<script>
+function toggleMenu() {
+  document.getElementById("mobileMenu").classList.toggle("active");
+}
+
+function toggleProducts() {
+  document.getElementById("productsMenu").classList.toggle("show");
+}
+</script>
+
+</body>
+</html>
